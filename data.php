@@ -1,31 +1,27 @@
 <?php
 
-$customers = [
-    "koen" => [
-        "name" => "koen",
+
+$orders = [
+    [
+        "customer" => "koen",
         "address" => "a yacht in Antwerp",
+        "pizza" => "calzone",
     ],
-    "manuele" => [
-        "name" => "manuele",
+    [
+        "customer" => "manuele",
         "address" => "somewhere in Belgium",
+        "pizza" => "marguerita",
     ],
-    "students" => [
-        "name" => "students",
+    [
+        "customer" => "students",
         "address" => "BeCode office",
+        "pizza" => "golden",
     ],
 ];
 
-$pizzas = [
-    "marguerita" => [
-        "name" => "marguerita",
-        "price" => 5,
-    ],
-    "golden" => [
-        "name" => "golden",
-        "price" => 100,
-    ],
-    "calzone" => [
-        "name" => "calzone",
-        "price" => 10,
-    ],
+
+$pizzaPrices = [
+    "marguerita" => 5,
+    "golden" => 100,
+    "calzone" => 10,
 ];
