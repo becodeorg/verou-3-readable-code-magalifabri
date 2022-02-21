@@ -1,63 +1,56 @@
 <?php
 
-// fw = for who
-function ordr_pz($pizzatype, $fw)
+$customers = [
+    "koen" => [
+        "name" => "koen",
+        "address" => "a yacht in Antwerp",
+    ],
+    "manuele" => [
+        "name" => "manuele",
+        "address" => "somewhere in Belgium",
+    ],
+    "students" => [
+        "name" => "students",
+        "address" => "BeCode office",
+    ],
+];
+
+$pizzas = [
+    "marguerita" => [
+        "name" => "marguerita",
+        "price" => 5,
+    ],
+    "golden" => [
+        "name" => "golden",
+        "price" => 100,
+    ],
+    "calzone" => [
+        "name" => "calzone",
+        "price" => 10,
+    ],
+];
+
+
+function placeOrder($pizza, $customer)
 {
-
-    $type = $pizzatype;
-    echo 'Creating new order... <br>';
-    $toPrint = 'A ';
-    $toPrint .= $pizzatype;
-    $p = calc_cts($type);
-
-    $address = 'unknown';
-    if ($fw == 'koen') {
-        $address = 'a yacht in Antwerp';
-    } elseif ($fw == 'manuele') {
-        $address = 'somewhere in Belgium';
-    } elseif ($fw == 'students') {
-        $address = 'BeCode office';
+    if (!$pizza || !$customer) {
+        echo "Invalid order.";
+        return;
     }
 
-    $toPrint .=   ' pizza should be sent to ' . $fw . ". <br>The address: {$address}.";
-    echo $toPrint;
-    echo '<br>';
-    echo 'The bill is €' . $p . '.<br>';
-
-
-
-
-    echo "Order finished.<br><br>";
+    echo "Creating new order... <br>"
+        . "A ${pizza['name']} pizza should be sent to ${customer['name']} <br>"
+        . "The address: ${customer['address']} <br>"
+        . "The bill is €${pizza['price']} <br>"
+        . "Order finished. <br><br>";
 }
 
-function calc_cts($p_type)
+
+function orderAllPizzas($pizzas, $customers)
 {
-    $cst = 'unknown';
-
-    if ($p_type == 'marguerita') {
-        $cst = 5;
-    } else {
-        if ($p_type == 'golden') {
-            $cst = 100;
-        }
-
-        if ($p_type == 'calzone') {
-            $cst = 10;
-        }
-
-        if ($p_type == 'hawaii') {
-            throw new Exception('Computer says no');
-        }
-    }
-
-    return $cst;
+    placeOrder($pizzas["calzone"], $customers["koen"]);
+    placeOrder($pizzas["marguerita"], $customers["manuele"]);
+    placeOrder($pizzas["golden"], $customers["students"]);
 }
 
-function orderAllPizzas()
-{
-    ordr_pz('calzone', 'koen');
-    ordr_pz('marguerita', 'manuele');
-    ordr_pz('golden', 'students');
-}
-
-orderAllPizzas();
+orderAllPizzas($pizzas, $customers);
