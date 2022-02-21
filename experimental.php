@@ -30,16 +30,6 @@ function ordr_pz($pizzatype, $fw)
     echo "Order finished.<br><br>";
 }
 
-function total_price($p)
-{
-    return $p;
-}
-
-function test($p_type)
-{
-    echo "Test: type is {$p_type}. <br>";
-}
-
 function calc_cts($p_type)
 {
     $cst = 'unknown';
